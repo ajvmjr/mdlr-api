@@ -1,9 +1,9 @@
 const express = require('express');
-const { router } = require('./routes');
+const { categoriesRoutes } = require('./routes/categories');
 
 const app = express();
 
 app.use(express.json());
-app.use(router);
+app.use(categoriesRoutes);
 
 module.exports = { app };

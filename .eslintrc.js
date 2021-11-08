@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     'linebreak-style': 'off',
     'import/prefer-default-export': 'off',
+    'consistent-return': 'off',
   },
 };
