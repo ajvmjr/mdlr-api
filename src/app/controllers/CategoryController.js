@@ -29,7 +29,7 @@ module.exports = {
 
     const contact = repository.update(id, { name });
 
-    res.status(204).json(contact);
+    res.status(200).json(contact);
   },
 
   async delete(req, res) {

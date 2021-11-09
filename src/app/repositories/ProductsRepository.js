@@ -1,0 +1,47 @@
+const db = require('../../database/connect');
+
+module.exports = {
+  async findAll(orderBy = 'ASC') {
+    const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+
+    const rows = await db.query(`
+      SELECT p.* 
+      FROM PRODUCTS p
+      LEFT JOIN CATEGORIES c ON p.category_id = c.id
+      ORDER BY p.name ${direction}
+    `);
+    return rows;
+  },
+
+  async create({
+    name, filename, price, category_id,
+  }) {
+    const [row] = await db.query(`
+      INSERT INTO PRODUCTS (name, image, price, category_id)
+      VALUES ($1, $2, $3, $4)
+      RETURNING *
+    `, [name, filename, price, category_id]);
+    return row;
+  },
+
+  async update(id, {
+    name, filename, price, category_id,
+  }) {
+    const [row] = await db.query(`
+      UPDATE PRODUCTS
+      SET name = $1,
+          image = $2,
+          price = $3,
+          category_id = $4
+      WHERE id = $5
+    `, [name, filename, price, category_id, id]);
+    return row;
+  },
+
+  async delete(id) {
+    await db.query(`
+    DELETE FROM PRODUCTS
+    WHERE id = $1
+    `, [id]);
+  },
+};
