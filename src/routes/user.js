@@ -1,9 +1,9 @@
-const { Router } = require('express');
+import { Router } from 'express';
+
+import controller from '../app/controllers/UserController';
 
 const userRoutes = Router();
 
-const controller = require('../app/controllers/UserController');
-
 userRoutes.post('/users', controller.store);
 
-module.exports = { userRoutes };
+export default userRoutes;

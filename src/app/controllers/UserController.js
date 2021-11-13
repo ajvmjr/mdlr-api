@@ -1,7 +1,7 @@
-const bcrypt = require('bcryptjs');
-const repository = require('../repositories/UsersRepository');
+import bcrypt from 'bcryptjs';
+import repository from '../repositories/UsersRepository';
 
-module.exports = {
+export default {
   async store(req, res) {
     const { name, email, password } = req.body;
 

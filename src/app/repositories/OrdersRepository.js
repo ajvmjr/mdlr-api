@@ -1,6 +1,6 @@
-const db = require('../../database/connect');
+import db from '../../database/connect';
 
-module.exports = {
+export default {
   async findAllUserOrders(userId) {
     const rows = await db.query(`
       SELECT *

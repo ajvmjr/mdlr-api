@@ -1,12 +1,12 @@
-const { Router } = require('express');
-const multer = require('multer');
-const uploadConfig = require('../config/upload');
+import { Router } from 'express';
+import multer from 'multer';
+import uploadConfig from '../config/upload';
+
+import authMiddleware from '../app/middlewares/auth';
+
+import controller from '../app/controllers/ProductController';
 
 const upload = multer(uploadConfig);
-
-const authMiddleware = require('../app/middlewares/auth');
-
-const controller = require('../app/controllers/ProductController');
 
 const productsRoutes = Router();
 
@@ -15,4 +15,4 @@ productsRoutes.post('/products', authMiddleware.auth, upload.single('image'), co
 productsRoutes.put('/products/:id', authMiddleware.auth, upload.single('image'), controller.update);
 productsRoutes.delete('/products/:id', authMiddleware.auth, controller.delete);
 
-module.exports = { productsRoutes };
+export default productsRoutes;

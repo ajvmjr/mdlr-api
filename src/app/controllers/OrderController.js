@@ -1,6 +1,6 @@
-const repository = require('../repositories/OrdersRepository');
+import repository from '../repositories/OrdersRepository';
 
-module.exports = {
+export default {
   async index(req, res) {
     const { userId } = req;
 

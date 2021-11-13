@@ -1,11 +1,11 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
 
-const { categoriesRoutes } = require('./routes/categories');
-const { productsRoutes } = require('./routes/products');
-const { authRoutes } = require('./routes/auth');
-const { userRoutes } = require('./routes/user');
-const { ordersRoutes } = require('./routes/orders');
+import path from 'path';
+import categoriesRoutes from './routes/categories';
+import productsRoutes from './routes/products';
+import authRoutes from './routes/auth';
+import userRoutes from './routes/user';
+import ordersRoutes from './routes/orders';
 
 const app = express();
 
@@ -17,4 +17,4 @@ app.use(userRoutes);
 app.use(productsRoutes);
 app.use(ordersRoutes);
 
-module.exports = { app };
+export default app;

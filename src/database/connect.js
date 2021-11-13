@@ -1,11 +1,14 @@
-const { Client } = require('pg');
+import dotenv from 'dotenv';
+import { Client } from 'pg';
+
+dotenv.config();
 
 const client = new Client({
-  host: 'localhost',
-  port: 5432,
-  user: 'postgres',
-  password: '12345678',
-  database: 'mdlr-ecommerce',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 client.connect();

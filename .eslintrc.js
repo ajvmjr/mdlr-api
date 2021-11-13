@@ -14,7 +14,9 @@ module.exports = {
     'linebreak-style': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/extensions': 'off',
     'consistent-return': 'off',
+    'no-global-assign': 'off',
     camelcase: 'off',
   },
 };

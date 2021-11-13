@@ -1,6 +1,6 @@
-const { Router } = require('express');
+import { Router } from 'express';
 
-const controller = require('../app/controllers/CategoryController');
+import controller from '../app/controllers/CategoryController';
 
 const categoriesRoutes = Router();
 
@@ -9,4 +9,4 @@ categoriesRoutes.post('/categories', controller.store);
 categoriesRoutes.put('/categories/:id', controller.update);
 categoriesRoutes.delete('/categories/:id', controller.delete);
 
-module.exports = { categoriesRoutes };
+export default categoriesRoutes;

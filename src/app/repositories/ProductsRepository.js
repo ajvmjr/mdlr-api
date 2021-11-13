@@ -1,6 +1,6 @@
-const db = require('../../database/connect');
+import db from '../../database/connect';
 
-module.exports = {
+export default {
   async findAll(orderBy = 'ASC') {
     const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
 

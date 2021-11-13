@@ -1,6 +1,6 @@
-const repository = require('../repositories/ProductsRepository');
+import repository from '../repositories/ProductsRepository';
 
-module.exports = {
+export default {
   async index(req, res) {
     const { orderBy } = req.query;
 

@@ -1,9 +1,11 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const repository = require('../repositories/UsersRepository');
-require('dotenv').config();
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import repository from '../repositories/UsersRepository';
 
-module.exports = {
+dotenv.config();
+
+export default {
   async auth(req, res) {
     const { email, password } = req.body;
 
