@@ -17,4 +17,6 @@ app.use(userRoutes);
 app.use(productsRoutes);
 app.use(ordersRoutes);
 
+app.listen(3000, () => console.log('Server on at 3000'));
+
 export default app;
