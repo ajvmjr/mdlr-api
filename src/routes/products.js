@@ -11,6 +11,7 @@ const upload = multer(uploadConfig);
 const productsRoutes = Router();
 
 productsRoutes.get('/products', controller.index);
+productsRoutes.get('/products/:id', controller.show);
 productsRoutes.post('/products', authMiddleware.auth, upload.single('image'), controller.store);
 productsRoutes.put('/products/:id', authMiddleware.auth, upload.single('image'), controller.update);
 productsRoutes.delete('/products/:id', authMiddleware.auth, controller.delete);

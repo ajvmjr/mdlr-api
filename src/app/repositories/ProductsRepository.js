@@ -13,6 +13,16 @@ export default {
     return rows;
   },
 
+  async findById(id) {
+    const [row] = await db.query(`
+      SELECT p.* 
+      FROM PRODUCTS p
+      LEFT JOIN CATEGORIES c ON p.category_id = c.id
+      WHERE p.id = $1
+    `, [id]);
+    return row;
+  },
+
   async create({
     name, filename, price, category_id,
   }) {

@@ -9,6 +9,14 @@ export default {
     res.status(200).json(products);
   },
 
+  async show(req, res) {
+    const { id } = req.params;
+
+    const product = await repository.findById(id);
+
+    res.status(200).json(product);
+  },
+
   async store(req, res) {
     const { filename } = req.file;
     const { name, price, category_id } = req.body;
