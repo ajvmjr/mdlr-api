@@ -7,6 +7,7 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
+    "correios-brasil": "^2.2.2",
     "cors": "^2.8.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",

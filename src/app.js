@@ -9,6 +9,7 @@ import productsRoutes from './routes/products';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/user';
 import ordersRoutes from './routes/orders';
+import cepRoutes from './routes/cep';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(authRoutes);
 app.use(userRoutes);
 app.use(productsRoutes);
 app.use(ordersRoutes);
+app.use(cepRoutes);
 
 app.listen(3001, () => console.log('Server on at 3001'));
 
