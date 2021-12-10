@@ -3,8 +3,9 @@ import db from '../../database/connect';
 export default {
   async findAllUserOrders(userId) {
     const rows = await db.query(`
-      SELECT *
-      FROM Orders
+      SELECT p.*
+      FROM Orders o
+      INNER JOIN Products p ON p.id = o.product_id 
       WHERE user_id = $1
     `, [userId]);
     return rows;
