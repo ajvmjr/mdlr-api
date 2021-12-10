@@ -10,10 +10,10 @@ export default {
   },
 
   async store(req, res) {
-    const { product_id } = req.body;
+    const { product_id, quantity } = req.body;
     const { userId } = req;
 
-    const order = await repository.create({ product_id, user_id: userId });
+    const order = await repository.create({ product_id, quantity, user_id: userId });
 
     res.status(201).json(order);
   },
