@@ -1,3 +1,4 @@
+import { map as mapValues, groupBy } from 'lodash';
 import repository from '../repositories/OrdersRepository';
 
 export default {
@@ -6,7 +7,9 @@ export default {
 
     const orders = await repository.findAllUserOrders(userId);
 
-    res.status(200).json(orders);
+    const ordersGroupedById = mapValues(groupBy(orders, 'order_id'));
+
+    res.status(200).json(ordersGroupedById);
   },
 
   async store(req, res) {
