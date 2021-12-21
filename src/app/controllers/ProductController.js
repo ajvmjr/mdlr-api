@@ -2,9 +2,9 @@ import repository from '../repositories/ProductsRepository';
 
 export default {
   async index(req, res) {
-    const { orderBy } = req.query;
+    const { orderBy, categoryId } = req.query;
 
-    const products = await repository.findAll(orderBy);
+    const products = await repository.findAll({ orderBy, categoryId });
 
     res.status(200).json(products);
   },

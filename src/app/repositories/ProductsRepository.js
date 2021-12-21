@@ -1,15 +1,16 @@
 import db from '../../database/connect';
 
 export default {
-  async findAll(orderBy = 'ASC') {
+  async findAll({ orderBy = 'ASC', categoryId }) {
     const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
 
     const rows = await db.query(`
       SELECT p.* 
       FROM PRODUCTS p
       LEFT JOIN CATEGORIES c ON p.category_id = c.id
+      WHERE p.category_id = $1 OR $1 IS NULL
       ORDER BY p.name ${direction}
-    `);
+    `, [categoryId]);
     return rows;
   },
 
