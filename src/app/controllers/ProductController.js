@@ -19,14 +19,16 @@ export default {
 
   async store(req, res) {
     const { filename } = req.file;
-    const { name, price, category_id } = req.body;
+    const {
+      name, price, description, category_id,
+    } = req.body;
 
-    if (!name || !filename || !price || !category_id) {
-      return res.status(400).json({ msg: 'Informe o nome, categoria, preço e imagem do produto.' });
+    if (!name || !filename || !price || description || !category_id) {
+      return res.status(400).json({ msg: 'Informe o nome, categoria, preço, descrição e imagem do produto.' });
     }
 
     const product = await repository.create({
-      name, filename, price, category_id,
+      name, filename, price, description, category_id,
     });
 
     return res.status(201).json(product);
@@ -35,14 +37,16 @@ export default {
   async update(req, res) {
     const { filename } = req.file;
     const { id } = req.params;
-    const { name, price, category_id } = req.body;
+    const {
+      name, price, description, category_id,
+    } = req.body;
 
-    if (!name || !filename || !price || !category_id) {
-      return res.status(400).json({ msg: 'Informe o nome, categoria, preço e imagem do produto.' });
+    if (!name || !filename || !price || description || !category_id) {
+      return res.status(400).json({ msg: 'Informe o nome, categoria, preço, descrição e imagem do produto.' });
     }
 
     const updatedProduct = await repository.update(id, {
-      name, filename, price, category_id,
+      name, filename, price, description, category_id,
     });
 
     res.status(200).json(updatedProduct);

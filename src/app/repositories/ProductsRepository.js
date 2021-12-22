@@ -26,18 +26,18 @@ export default {
   },
 
   async create({
-    name, filename, price, category_id,
+    name, filename, price, category_id, description,
   }) {
     const [row] = await db.query(`
-      INSERT INTO PRODUCTS (name, image, price, category_id)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO PRODUCTS (name, image, price, category_id, description)
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING *
-    `, [name, filename, price, category_id]);
+    `, [name, filename, price, category_id, description]);
     return row;
   },
 
   async update(id, {
-    name, filename, price, category_id,
+    name, filename, price, category_id, description,
   }) {
     const [row] = await db.query(`
       UPDATE PRODUCTS
@@ -45,8 +45,9 @@ export default {
           image = $2,
           price = $3,
           category_id = $4
-      WHERE id = $5
-    `, [name, filename, price, category_id, id]);
+          description = $5
+      WHERE id = $6
+    `, [name, filename, price, category_id, description, id]);
     return row;
   },
 
